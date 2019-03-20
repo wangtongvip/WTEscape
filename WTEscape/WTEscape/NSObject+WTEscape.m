@@ -28,6 +28,9 @@
     [tempString appendFormat:@"[指针地址:%p]",&self];
     [tempString appendString:@"["];
     
+    /* TODO 这里在真机测试分享的时候会导致崩溃 待查找问题。
+     * 临时解决方案，可暂时将成员变量打印逻辑注释掉
+     */
     unsigned int ivarsCount = 0;
     Ivar *ivars = class_copyIvarList([self class], &ivarsCount);
     for (int i = 0; i < ivarsCount; i++) {

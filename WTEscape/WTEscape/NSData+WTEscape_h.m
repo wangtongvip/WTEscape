@@ -29,7 +29,16 @@
             || [result isKindOfClass:[NSSet class]])) {
         [tempString appendFormat:@"%@", [result descriptionWithLocale:locale indent:level]];
     } else {
-        [tempString appendFormat:@"%@", self];
+        NSAssert(error == nil, @"NSData+Escape 编码解析出现问题");
+        [tempString appendFormat:@"! %@ 解析error !", [self class]];
+        //TODO:
+        /*
+         [tempString appendFormat:@"%@", self];
+         */
+        /**
+         2019-03-20 10:39:21.186363+0800 PANGU[15782:5099478] *** Assertion failure in -[NSConcreteMutableData descriptionWithLocale:indent:], /Users/modouyu/Desktop/PANGU/PANGU/Globle/Utils/WTEscape/NSData+WTEscape_h.m:32
+         
+         */
     }
     
     return tempString.copy;
